@@ -9,7 +9,7 @@ const mutations = {
     if (record) {
       record.quantity += quantity;
     } else {
-      state.stocks.push({ id: stockId, quantity });
+      state.stocks.push({ id: stockId, quantity: quantity });
     }
     state.funds -= stockPrice * quantity;
   },
@@ -32,10 +32,11 @@ const actions = {
 
 const getters = {
   stockPortfolio(state, getters) {
+    console.log(state.stocks);
     return state.stocks.map(stock => {
       const record = getters.stocks.find(stock => stock.id === stock.id);
       return {
-        id: stock,
+        id: stock.id,
         quantity: stock.quantity,
         name: record.name,
         price: record.price
@@ -45,4 +46,11 @@ const getters = {
   funds(state) {
     return state.funds;
   }
+};
+
+export default {
+  state,
+  mutations,
+  actions,
+  getters
 };
