@@ -3,8 +3,8 @@
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title">
-          {{ name }}
-          <small>{{ price + ' US$' }}</small>
+          {{ stock.name }}
+          <small>{{ stock.price + ' US$' }}</small>
         </h3>
       </div>
       <div class="panel-body">
@@ -17,7 +17,7 @@
           />
         </div>
         <div class="pull-right">
-          <button class="btn btn-success">Buy</button>
+          <button class="btn btn-success" :disabled="quantity <= 0">Buy</button>
         </div>
       </div>
     </div>
@@ -26,13 +26,21 @@
 
 <script>
 export default {
-  props: ['name', 'price'],
+  props: ['stock'],
   data() {
     return {
       quantity: 0
     };
   },
-  methods: { buyStock() {} }
+  methods: {
+    buyStock() {
+      const order = {
+        stockId: this.stock.id,
+        stockPrice: this.stock.price,
+        quantity: this.quantity
+      };
+    }
+  }
 };
 </script>
 
