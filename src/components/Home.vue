@@ -1,9 +1,21 @@
 <template>
-  <p>home component</p>
+  <div>
+    <h1>Trade or view your portfolio</h1>
+    <h6>You may save & load your data</h6>
+    <h6>click on 'End day' to begin a new day</h6>
+    <hr />
+    <p>Your funds: US$ {{ funds }}</p>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    funds() {
+      return this.$store.getters.funds;
+    }
+  }
+};
 </script>
 
 <style></style>
