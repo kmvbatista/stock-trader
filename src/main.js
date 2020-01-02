@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 
 import { routes } from './routes';
 import App from './App.vue';
 import store from './store/store';
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
+
+Vue.http.options.root = 'https://stock-trader-ceda1.firebaseio.com/';
 
 const router = new VueRouter({
   mode: 'history',
