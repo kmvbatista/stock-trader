@@ -4,7 +4,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           {{ stock.name }}
-          <small>{{ stock.price + ' US$' }}</small>
+          <small>{{ stock.price | currency }}</small>
         </h3>
       </div>
       <div class="panel-body">
@@ -52,9 +52,6 @@ export default {
   },
   computed: {
     insufficientFunds() {
-      console.log(this.funds);
-      console.log(this.quantity * this.stock.price);
-
       return this.quantity * this.stock.price > this.funds;
     },
     funds() {
